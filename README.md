@@ -18,7 +18,7 @@ library(scImmuneGraph)
 ```
 
 ## Getting Data
-tcontig_list : A dataset with TCR data from the 10x Genomics Chromium Immune Profiling.
+tcontig_list : A dataset with TCR data from the 10x Genomics Chromium Immune Profiling.   
 bcontig_list : A dataset with BCR data from the 10x Genomics Chromium Immune Profiling.
 ```
 data(tcontig_list)
