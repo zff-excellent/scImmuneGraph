@@ -18,7 +18,8 @@
 #'
 #' contig_list <- TCR.ContigList(project_data_dir, sample_name, group_name)
 #' BasicPlot(TCR.ClonalStateDistribution, contig_list, sample_name)
-BasicPlot <- function(plot_fun, contigList, sampleName) {
-  plot_fun(contigList, sampleName)
-}
+BasicPlot <- function(plot_fun, contigList, sampleName){
+  multi_plots <- plot_fun(contigList, sampleName)
+  cowplot::plot_grid(plotlist=multi_plots)
+  }
 # ----------------------------------------------------------------------------------------------------------------
