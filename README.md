@@ -11,7 +11,7 @@ devtools::install_github('zff-excellent/scImmuneGraph')
 library(scImmuneGraph)
 ```
 
-* Other installation way 
+**Other installation way**
 ```
 install.packages('F:/R_Language/R_Practice/R_Packages/scImmuneGraph_0.1.0.tar.gz', repos = NULL, type="source")
 library(scImmuneGraph)
