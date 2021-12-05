@@ -1,0 +1,72 @@
+---
+author: "Introduction to scImmuneGraph"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteEngine{knitr::knitr}
+  %\VignetteIndexEntry{Title of your vignette}
+  %\usepackage[UTF-8]{inputenc}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+rm(list=ls())
+# install.packages('easypackages')
+library(easypackages)
+packages <- c('RColorBrewer', 'scales', 'ggplot2', 'cowplot', 'tidyverse', 'readr', 'tidyr', 'dplyr', 'gtools',
+              'forcats')
+libraries(packages)
+# install.packages('F:/R_Language/scImmuneGraph_0.1.0.tar.gz', repos = NULL, type="source")
+library(scImmuneGraph)
+data(tcontig_list)
+```
+
+***
+
+TCR basic information statistics
+
+```{r}
+contig_list <- tcontig_list
+sample_name <- names(contig_list)
+# contig_list <- TCR.ContigList(project_data_dir, sample_name, group_name)
+
+multi_plots <- TCR.ClonalStateDistribution(contig_list, sample_name)
+cowplot::plot_grid(plotlist=multi_plots)
+
+# Or all functions as the same call way
+multi_plots <- BasicPlot(TCR.ClonalStateDistribution, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.top100ClonotypeAbundance, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.ClonotypeComposition, contig_list, sample_name) # Diversity # √
+multi_plots <- BasicPlot(TCR.top100CDR3Abundance, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.CDR3ntLengthDistribution, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.VgeneAbundance, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.JgeneAbundance, contig_list, sample_name) # √
+multi_plots <- BasicPlot(TCR.VJgenePair, contig_list, sample_name) # √
+cowplot::plot_grid(plotlist=multi_plots)
+
+```
+
+***
+
+BCR basic information statistics
+
+```{r}
+# contig_list <- BCR.ContigList(project_data_dir, sample_name, group_name)
+contig_list <- bcontig_list
+sample_name <- names(contig_list)
+multi_plots <- BasicPlot(BCR.ClonalStateDistribution, contig_list, sample_name) # SAME
+multi_plots <- BasicPlot(BCR.top100ClonotypeAbundance, contig_list, sample_name) # SAME
+multi_plots <- BasicPlot(BCR.ClonotypeComposition, contig_list, sample_name) # SAME
+multi_plots <- BasicPlot(BCR.top100CDR3Abundance, contig_list, sample_name)
+multi_plots <- BasicPlot(BCR.CDR3ntLengthDistribution, contig_list, sample_name)
+multi_plots <- BasicPlot(BCR.VgeneAbundance, contig_list, sample_name)
+```
+
+***
