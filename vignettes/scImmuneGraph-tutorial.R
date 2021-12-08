@@ -1,75 +1,22 @@
----
-title: "Introduction to scImmuneGraph"
-author: 
-  name: Fenfei Zhao
-  email: fenfeizhao2020@163.com
-date: "`r Sys.Date()`"
-output:
-  BiocStyle::html_document:
-    toc_float: true
-package: scImmuneGraph
-vignette: >
-  %\VignetteIndexEntry{Using scImmuneGraph}
-  %\VignetteEngine{knitr::rmarkdown}
-  %\VignetteEncoding{UTF-8}
----
-
-
-```{r, echo=FALSE, results="hide", message=FALSE}
+## ---- echo=FALSE, results="hide", message=FALSE-------------------------------
 knitr::opts_chunk$set(error=FALSE, message=FALSE, warning=FALSE)
 library(BiocStyle)
-```
 
-***
-# Installation Package
-```r
-rm(list=ls())
-library(devtools)
-devtools::install_github('zff-excellent/scImmuneGraph')
-```
-
-```{r}
+## -----------------------------------------------------------------------------
 suppressMessages(library(scImmuneGraph))
-```
 
-# Converting 10X genomics produced B cell contigs file(s) as a list outputed
-- For TCR 
-
-```
-project_data_dir <- "F:/R_Language/data/tcr"
-sample_name <- list.dirs(project_data_dir, full.names = FALSE, recursive = FALSE)
-group_name <- c("A", "A", "B", "B")
-
-contig_list <- TCR.ContigList(project_data_dir, sample_name, group_name)
-```
-- For BCR
-```
-project_data_dir <- "F:/R_Language/data/bcr"
-sample_name <- list.dirs(project_data_dir, full.names = FALSE, recursive = FALSE)
-group_name <- c("A", "A", "B", "B")
-
-contig_list <- BCR.ContigList(project_data_dir, sample_name, group_name)
-```
-
-# Getting Data
-- tcontig_list : TCR dataset from the 10x Genomics Chromium Immune Profiling.
-- bcontig_list : BCR dataset from the 10x Genomics Chromium Immune Profiling.
-```{r}
+## -----------------------------------------------------------------------------
 data(tcontig_list)
 data(bcontig_list)
-```
 
-# TCR basic information statistics
-```{r}
+## -----------------------------------------------------------------------------
 contig_list <- tcontig_list
 sample_name <- names(contig_list)
 
 multi_plots <- TCR.ClonalStateDistribution(contig_list, sample_name)
 cowplot::plot_grid(plotlist=multi_plots)
-```
 
-
-```{r}
+## -----------------------------------------------------------------------------
 # Or all functions as the same call way
 multi_plots <- BasicPlot(TCR.ClonalStateDistribution, contig_list, sample_name) 
 cowplot::plot_grid(plotlist=multi_plots)
@@ -87,11 +34,8 @@ multi_plots <- BasicPlot(TCR.JgeneAbundance, contig_list, sample_name)
 cowplot::plot_grid(plotlist=multi_plots)
 multi_plots <- BasicPlot(TCR.VJgenePair, contig_list, sample_name) 
 cowplot::plot_grid(plotlist=multi_plots)
-```
 
-
-# BCR basic information statistics
-```{r}
+## -----------------------------------------------------------------------------
 # contig_list <- BCR.ContigList(project_data_dir, sample_name, group_name)
 contig_list <- bcontig_list
 sample_name <- names(contig_list)
@@ -111,11 +55,7 @@ multi_plots <- BasicPlot(BCR.JgeneAbundance, contig_list, sample_name)
 cowplot::plot_grid(plotlist=multi_plots)
 multi_plots <- BasicPlot(BCR.VJgenePair, contig_list, sample_name) 
 cowplot::plot_grid(plotlist=multi_plots)
-```
 
-
-# Session Info
-
-```{r}
+## -----------------------------------------------------------------------------
 sessionInfo()
-```
+
