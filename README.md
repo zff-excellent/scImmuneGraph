@@ -26,7 +26,7 @@ data(bcontig_list)
 ```
 
 ## Learning To Use scRepertoire
-Vignette available [here](https://github.com/zff-excellent/scImmuneGraph/blob/master/vignettes/scImmuneGraph-tutorial.md), includes TCR and BCR data of four single-cell samples.
+Vignette available [here](https://zff-excellent.github.io/vignettes/scImmuneGraph-tutorial.html), includes TCR and BCR data of four single-cell samples.
 
 ## Please Cite
 Feel free to use, edit, modify scRepertoire, but if you do, please cite the manuscript.
