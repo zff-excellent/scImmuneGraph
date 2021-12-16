@@ -43,7 +43,7 @@ BCR.JgeneAbundance <- function(contigList, sampleName) {
       ggplot(aes(x = jgene, y = frequency, fill = frequency)) +
       geom_bar(stat = "identity") +
       scale_y_continuous(expand = c(0, 0)) +
-      labs(title = sampleNames, x = "TRA+TRB J Gene", y = "Barcode Frequency") +
+      labs(title = sampleNames, x = "IGH-IGK/IGL J Gene", y = "Barcode Frequency") +
       geom_text(aes(label = frequency), size = 4, vjust = 1.2, hjust = 0.5) +
       scale_fill_gradientn(colours = c("#ffffcc", colorRampPalette(c("#aedfb7", "#3799bb", "#3086b5", "#2a74af", "#225fa8"))(800))) +
       theme_bw() +
