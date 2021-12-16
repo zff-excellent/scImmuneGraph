@@ -47,7 +47,7 @@ BCR.top100CDR3Abundance <- function(contigList, sampleName) {
       geom_bar(stat = "identity") +
       scale_fill_gradientn(colours = c("#ffffcc", colorRampPalette(c("#aedfb7", "#3799bb", "#3086b5", "#2a74af", "#225fa8"))(800))) +
       scale_y_continuous(expand = c(0, 0)) +
-      labs(title = sampleNames, x = "TRAB CDR3s", y = "Barcode Frequency") +
+      labs(title = sampleNames, x = "IGH-IGK/IGL CDR3s", y = "Barcode Frequency") +
       facet_grid(chain ~ .) +
       theme_bw() +
       theme(
